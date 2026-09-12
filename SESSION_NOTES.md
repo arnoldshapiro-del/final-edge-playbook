@@ -9,3 +9,9 @@ Built as a single static page (`index.html`, ~50 KB): eight sections — the one
 Every card label was checked against the source before it was typed: FINAL GATE's lamps (`SetLight(L_...)` labels in FinalEdgeGates.cs), ENTER NOW?'s TAKE / WAIT / SKIP (`VW_TAKE` in FinalLevels.cs), FLAG?'s FLAG 1 / 2 / 3 · final, THE ANSWER's UPTREND ↑ / DOWNTREND ↓ / MIDDLE, the SWEEPS lanes from the teaching packs, the rails from the repo CLAUDE.md, the sentences from the teaching packs and SESSION_NOTES.
 
 Deploy: repo created on GitHub, Netlify site created and linked (installation 77160536), production URL verified, .url shortcut on the Desktop. Gallery card: NOT added without Arnie's yes (arnies-app-showcase is on his ask-first list).
+
+## 2026-09-12 (Sat, night) — v1.1.0: the cards 7 → 3
+
+Arnie ordered the recommendation built ("that includes combining the cards"), so the page changed with the cards, the same night: the lede and section 02 now describe three windows (FINAL GATE with THE ANSWER's word under its banner; SWEEPS with the flag counter on lane ②; the EXIT MAP with two faces — the ENTER NOW? text while flat, the trade when in), THE ANSWER's card is marked "drawn in the corner, no window", FLAG? and ENTER NOW? and Big Money's window are marked off with the dial that brings each back, section 06's "not combined yet" block became "seven became three", the sidebar versions are v3.39.0 / v10.39.0 / v5.77.0 / v5.55 / 2.1.2 and say "Live after Arnie's next F5", the footer and sidebar read v1.1.0. Sources: the indicator repo's `docs/DECISIONS-CARDS-AND-OWNERSHIP-2026-09-12.md`, LEGEND "WHAT'S NEW 2026-09-12 (night)", the cards teaching-pack addendum.
+
+Deploy: pushed to `arnoldshapiro-del/final-edge-playbook` main; Netlify site `final-edge-playbook` created by API (id df73f5be-f36a-42bb-9187-cfc00f8c2761, installation 77160536) → https://final-edge-playbook.netlify.app.
