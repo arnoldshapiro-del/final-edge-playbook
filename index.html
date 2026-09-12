@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Edge — The Playbook</title>
+<meta name="description" content="What the Final Edge cards say and what Arnie does: the six cards, the fifth lane, the voice, the rails, and a step-by-step example morning. Plain English, no jargon.">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#dfa849">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1424; --panel:#101B30; --panel2:#16233C; --line:#223650; --txt:#F2F7FF; --mut:#A9C0DC; --gray:#8A94A6;
+  --amber:#F5A623; --em:#2ECC71; --coral:#E74C3C; --brass:#DFA849; --blue:#4C9BE8;
+  --teal:var(--brass); --teal-dim:#a37b2f; --red:var(--coral);
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+html[data-theme="light"]{
+  --bg:#F5F7FB; --panel:#FFFFFF; --panel2:#EEF2F8; --line:#D5DCE8; --txt:#101B30; --mut:#4B5A73; --gray:#6B7891;
+  --shadow:0 10px 30px rgba(16,27,48,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.55}
+h1,h2,h3,h4,.brand,.lane-head,.card-title,.step-time,.big{font-family:Oxanium,"Segoe UI Semibold",sans-serif}
+.mono,.ticket,.lane,.sentence,.num,code{font-family:"Space Mono",Consolas,monospace}
+a{color:var(--brass)}
+.shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:18px 16px;display:flex;flex-direction:column;gap:10px}
+.brand{font-size:1.15rem;font-weight:800;letter-spacing:.5px;color:var(--brass);line-height:1.2}
+.brand small{display:block;font-family:Inter,sans-serif;font-weight:400;font-size:.72rem;color:var(--mut);letter-spacing:0;margin-top:4px}
+.nav a{display:block;padding:7px 10px;border-radius:8px;color:var(--txt);text-decoration:none;font-size:.9rem}
+.nav a:hover,.nav a.active{background:var(--panel2);color:var(--brass)}
+.nav .n{display:inline-block;width:22px;color:var(--gray);font-family:"Space Mono",monospace;font-size:.78rem}
+.side .status{margin-top:auto;font-size:.72rem;color:var(--mut);border-top:1px solid var(--line);padding-top:10px}
+.side .status b{color:var(--txt)}
+.toggle{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--mut);cursor:pointer;user-select:none;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel2)}
+main{padding:26px 34px 120px;max-width:1120px}
+section{margin-bottom:46px;scroll-margin-top:16px}
+h1{font-size:2rem;margin:0 0 6px;line-height:1.15}
+h2{font-size:1.45rem;margin:0 0 10px;color:var(--brass);letter-spacing:.3px}
+h3{font-size:1.05rem;margin:18px 0 6px}
+.lede{font-size:1.08rem;color:var(--mut);max-width:70ch;margin:0 0 14px}
+.tag{display:inline-block;font-family:"Space Mono",monospace;font-size:.7rem;padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--mut);margin-left:6px;vertical-align:middle}
+.tag.new{color:var(--amber);border-color:var(--amber)}
+.tag.ex{color:var(--blue);border-color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.card-title{font-size:1rem;font-weight:800;color:var(--brass);letter-spacing:.4px;margin:0 0 4px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card-title .where{font-family:Inter,sans-serif;font-weight:400;font-size:.72rem;color:var(--gray);white-space:nowrap}
+.lane{font-size:.78rem;line-height:1.5;margin:6px 0;padding:6px 9px;border-radius:8px;background:var(--panel2);border-left:3px solid var(--line);white-space:pre-wrap}
+.lane-head{font-size:.8rem;font-weight:700;color:var(--em);letter-spacing:.4px;margin-top:10px}
+.lane-head.brass{color:var(--brass)}
+.lane.green{border-left-color:var(--em)} .lane.coral{border-left-color:var(--coral)} .lane.amber{border-left-color:var(--amber)} .lane.grey{border-left-color:var(--gray);color:var(--mut)}
+.g{color:var(--em)} .c{color:var(--coral)} .a{color:var(--amber)} .m{color:var(--mut)} .b{color:var(--brass)} .bl{color:var(--blue)}
+.lamps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.lamp{font-family:"Space Mono",monospace;font-size:.68rem;padding:3px 8px;border-radius:14px;border:1px solid var(--line);color:var(--mut);display:inline-flex;align-items:center;gap:6px}
+.lamp i{width:9px;height:9px;border-radius:50%;background:var(--gray);display:inline-block}
+.lamp.on i{background:var(--em);box-shadow:0 0 8px var(--em)} .lamp.warn i{background:var(--amber)} .lamp.off i{background:var(--coral)}
+.what{margin-top:10px;font-size:.9rem}
+.what b{color:var(--brass)}
+.do{margin-top:6px;padding:8px 10px;border-radius:8px;background:rgba(223,168,73,.10);border:1px solid rgba(223,168,73,.35);font-size:.9rem}
+.do b{color:var(--brass)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:10px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--brass);font-family:Oxanium,sans-serif;font-weight:700;letter-spacing:.3px;font-size:.85rem}
+td.sentence{font-size:.8rem;color:var(--txt)}
+.rules{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.rules li{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 62px;position:relative;box-shadow:var(--shadow)}
+.rules li::before{counter-increment:r;content:counter(r);position:absolute;left:16px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--brass);color:#0B1424;font-family:Oxanium,sans-serif;font-weight:800;font-size:1.05rem;display:flex;align-items:center;justify-content:center}
+.rules b{color:var(--brass)}
+.stepper{display:grid;grid-template-columns:1fr;gap:12px}
+.steps{display:flex;flex-wrap:wrap;gap:6px}
+.steps button{font-family:Oxanium,sans-serif;font-weight:700;font-size:.82rem;padding:8px 12px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--txt);cursor:pointer}
+.steps button.active{background:var(--brass);color:#0B1424;border-color:var(--brass)}
+.step{display:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.step.active{display:block}
+.step-time{font-size:1.4rem;font-weight:800;color:var(--brass)}
+.step h3{margin-top:4px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.hear{background:var(--panel2);border-left:3px solid var(--brass);padding:10px 12px;border-radius:8px;margin:8px 0;font-size:.85rem}
+.hear .who{font-family:Oxanium,sans-serif;font-size:.72rem;color:var(--gray);letter-spacing:.4px;display:block;margin-bottom:3px}
+.ticket{font-size:.8rem;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;line-height:1.65}
+.verdict{font-family:Oxanium,sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:1px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.stat .num{font-size:1.5rem;font-weight:700;color:var(--coral)}
+.stat .num.good{color:var(--em)}
+.stat .src{font-size:.72rem;color:var(--gray);margin-top:6px}
+.honest{border:1px solid var(--amber);background:rgba(245,166,35,.08);border-radius:12px;padding:14px 16px;margin-top:14px}
+.honest b{color:var(--amber)}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.check li{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--brass)}
+.check li.done label{color:var(--gray);text-decoration:line-through}
+.small{font-size:.8rem;color:var(--mut)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:.9rem}
+dt{color:var(--brass);font-family:Oxanium,sans-serif;font-weight:700}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;color:var(--gray)}
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  .side{position:relative;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .side .status{margin-top:0;border-top:0;padding-top:0;width:100%}
+  .nav{display:flex;flex-wrap:wrap;gap:2px}
+  main{padding:18px 16px 120px}
+}
+@media print{.side,.narrator{display:none!important}.shell{display:block}.step{display:block}}
+
+/* ---------- Narrator (read-aloud bar, bottom-right — reads the whole page) ---------- */
+.narrator{position:fixed;right:14px;bottom:14px;z-index:80;max-width:min(540px,calc(100vw - 28px))}
+.nar-read-btn{min-height:32px;background:var(--teal);color:#04121a;border:1px solid var(--teal);border-radius:9px;font-family:inherit;font-weight:700;font-size:.74rem;letter-spacing:.2px;padding:7px 12px;box-shadow:0 4px 16px rgba(0,0,0,.45);cursor:pointer}
+.nar-read-btn:hover{background:#f0c065;border-color:#f0c065}
+.nar-controls{background:var(--panel);border:1px solid var(--teal-dim);border-radius:11px;box-shadow:0 8px 28px rgba(0,0,0,.55);padding:8px 9px}
+.nar-status{display:flex;align-items:center;gap:7px;font-weight:700;font-size:.7rem;color:var(--teal);margin-bottom:6px}
+.nar-anim{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
+.nar-anim i{width:2.5px;height:4px;background:var(--teal);border-radius:2px}
+.narrator.playing:not(.paused) .nar-anim i{animation:narbar .8s ease-in-out infinite alternate}
+.nar-anim i:nth-child(2){animation-delay:.15s}.nar-anim i:nth-child(3){animation-delay:.3s}.nar-anim i:nth-child(4){animation-delay:.45s}
+@keyframes narbar{from{height:3px}to{height:12px}}
+.nar-btn-row{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.nar-btn{min-height:26px;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:7px;font-family:inherit;font-weight:600;font-size:.68rem;padding:4px 7px;cursor:pointer;white-space:nowrap}
+.nar-btn:hover{border-color:var(--teal-dim)}
+.nar-primary{background:var(--teal);color:#04121a;border-color:var(--teal);min-width:70px;font-weight:800}
+.nar-primary:hover{background:#f0c065}
+.nar-stop{background:rgba(231,76,60,.12);color:var(--red);border-color:rgba(231,76,60,.5);min-width:58px;font-weight:700}
+.nar-seek{color:var(--teal);border-color:rgba(223,168,73,.3)}
+.nar-opts{display:flex;flex-wrap:wrap;gap:6px 13px;margin-top:7px;align-items:center}
+.nar-opt{display:flex;align-items:center;gap:5px;font-weight:600;font-size:.66rem;color:var(--mut)}
+.nar-opt input[type=range]{width:84px;height:14px;accent-color:var(--teal)}
+.nar-opt select{min-height:24px;padding:3px 5px;border:1px solid var(--line);border-radius:6px;font-size:.66rem;background:var(--panel2);color:var(--txt);font-family:inherit;max-width:140px}
+#nar-rate-label{color:var(--teal);font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  .narrator{left:10px;right:10px;bottom:10px;max-width:none}
+  .nar-read-btn{width:100%}
+  .nar-btn-row{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side">
+  <div class="brand">FINAL EDGE<br>THE PLAYBOOK<small>What the cards say · what you do</small></div>
+  <nav class="nav" id="nav">
+    <a href="#one-minute"><span class="n">01</span>The one-minute version</a>
+    <a href="#screen"><span class="n">02</span>Your screen: the cards</a>
+    <a href="#walkthrough"><span class="n">03</span>A morning, step by step</a>
+    <a href="#voice"><span class="n">04</span>What the voice says</a>
+    <a href="#rails"><span class="n">05</span>The rails and why they exist</a>
+    <a href="#new"><span class="n">06</span>What changed this weekend</a>
+    <a href="#checklist"><span class="n">07</span>Your daily checklist</a>
+    <a href="#words"><span class="n">08</span>The words</a>
+  </nav>
+  <div class="toggle" id="theme-toggle" role="button" tabindex="0">🌗 <span id="theme-label">Light mode</span></div>
+  <div class="status">
+    <b>Suite on GitHub 2026-09-12 (evening)</b><br>
+    SWEEPS v3.38.0 · LEVELS v10.38.0<br>GATES v5.76.0 · DAY GUARD v1.9.0<br>SWINGS v5.54 · BIG MONEY 2.1.1<br>
+    <span class="a">The Big Money lane installs on Arnie's word.</span><br><br>
+    Created 2026-09-12 · Revised 2026-09-12 · v1.0.0
+  </div>
+</aside>
+
+<main data-narrate>
+<h1>What the cards say. What you do.</h1>
+<p class="lede">One page for the whole system, in plain English. Six cards on your screen, one extra window from Big Money, one voice. Everything below is transcribed from the indicators as they stand this weekend. Where a price appears in an example it is only an example; the <b>rules</b> are the real thing.</p>
+
+<section id="one-minute">
+<h2>01 · The one-minute version</h2>
+<ol class="rules">
+  <li><b>Permission first.</b> FINAL GATE's lamps and its POSTURE line say whether a side is allowed at all. THE ANSWER on the 15-minute chart says UPTREND, DOWNTREND or MIDDLE, and since this weekend FINAL GATE's 15-minute lamp follows that word — they can no longer disagree. <b>No permission, no trade.</b></li>
+  <li><b>Wait for a setup on SWEEPS.</b> Only three things ever earn a call: a <b>sweep</b> of a real level that closes back inside (the reclaim), a <b>flag</b> that closes through its line, or a <b>double bottom / double top</b> that closes through the neckline. Nothing else is a trade.</li>
+  <li><b>The first two signals of the day are never taken.</b> They are numbers and a lesson. The card says "Numbers only." and reads you the ticket anyway, so you learn the shape without paying for it.</li>
+  <li><b>Take only what ENTER NOW? prices, at the size it says.</b> At Stage 1 (your named yes of 2026-09-07) only a <b>grade A</b> sweep — first candle back inside at one of the six session levels — earns "Your call.", and at <b>half size</b>. Grade B or C: watch only.</li>
+  <li><b>In the trade, EXIT MAP is the boss.</b> One stop voice, tighten only, never wider. The first target sits two ticks in front of the first wall. When a wall clears, the voice names the next one.</li>
+  <li><b>The rails are not suggestions.</b> Day line −$600 (flat only). Loss clock 15 minutes after one loss. Cooldown 30 minutes after two straight losses. Three losses lock the day. Nothing after 16:00 on the live account. The day starts at 09:45.</li>
+</ol>
+</section>
+
+<section id="screen">
+<h2>02 · Your screen: the cards, and how they work together</h2>
+<p class="lede">Six windows come from your own indicators; Big Money's window is a seventh, on its own chart. They are <b>not</b> combined yet — that plan (seven down to three) waits for your yes, one card at a time. Here is what each one decides and what you do with it.</p>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title">FINAL GATE <span class="where">the permission card</span></div>
+    <div class="lamps">
+      <span class="lamp on"><i></i>DOOR 1 · STRUCTURE</span><span class="lamp on"><i></i>5M LOC</span><span class="lamp on"><i></i>2M VWAP</span><span class="lamp warn"><i></i>2M 200</span><span class="lamp on"><i></i>ORB</span><span class="lamp"><i></i>RECLAIM</span><span class="lamp on"><i></i>RUNWAY</span><span class="lamp"><i></i>DOOR 2 · TREND DAY</span><span class="lamp on"><i></i>NEWS</span><span class="lamp on"><i></i>PHASE</span>
+    </div>
+    <div class="lane">POSTURE · the side the gate allows, or none<br>DAY · trades today, realized, the day line<br>the clock strip on the chart · the day type</div>
+    <div class="what"><b>What it decides:</b> whether a side is allowed. Green lamps are permission; DOOR 1 (the 15-minute structure) is the boss and now follows THE ANSWER's word. The title bar holds VOICE / MUTED and SHRINK ALL.</div>
+    <div class="do"><b>You:</b> if the posture does not allow the side, you do nothing — however good the setup looks.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">THE ANSWER <span class="where">15-minute chart</span></div>
+    <div class="lane"><span class="verdict g">UPTREND ↑</span>  higher highs + higher lows<br><span class="m">DOWNTREND ↓  lower highs + lower lows · MIDDLE  neither yet</span></div>
+    <div class="what"><b>What it decides:</b> the tide. One word from confirmed 15-minute swings. Since 2026-09-12 FINAL GATE's 15-minute lamp copies this word while it is fresh, so "downtrend on the card, green gate" cannot happen again.</div>
+    <div class="do"><b>You:</b> trade with the tide. Against it means half size and the first target only — and only when a wall backs you.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SWEEPS <span class="where">2-minute chart · five lanes</span></div>
+    <div class="lane-head">① THE SWEEP</div>
+    <div class="lane">STAGE 1: grade A = take it at HALF size · grade B or C = watch only · 7 of 30 trades logged before this rule is judged
+watching PDL 2955.1 · 12t below · with the tide
+poke below 2955.1 → 3-candle clock → close back above = GO · LONG up to 2</div>
+    <div class="lane-head brass">② THE FLAG</div>
+    <div class="lane grey">flag card quiet</div>
+    <div class="lane-head">③ DOUBLE BOTTOM / DOUBLE TOP · the door = a 2-min close through the neckline</div>
+    <div class="lane">THE W · base 2901.2 (the 10:14 low) · door = a 2-min close above 2905.6 · price 7t above it</div>
+    <div class="lane-head">④ DELTA (2-min tape)</div>
+    <div class="lane green">last candle +312 of 1840 (+17%) · rising · 5 candles +940 (+11%)
+BUYERS IN CONTROL → longs favored · no shorts into this</div>
+    <div class="lane-head">⑤ BIG MONEY (Astra's flow read) <span class="tag new">NEW</span></div>
+    <div class="lane green">FLOW FAVORS LONG · MED · Fast and longer flow agree with distinct fast evidence sources.
+data: OK · depth: L2 LIVE</div>
+    <div class="what"><b>What it decides:</b> the setup. Lane ① is the sweep engine (the only lane at Stage 1); ② echoes the flag card; ③ the double bottom or top with its one door; ④ who is in control of the tape; ⑤ Big Money's read of the order flow — green FLOW FAVORS LONG, coral FLOW FAVORS SHORT, amber DO NOT CHASE, grey everything else, "quiet since 10:14" when Big Money is not writing.</div>
+    <div class="do"><b>You:</b> a setup is worth looking at when lane ① or ③ prices a ticket <i>and</i> ④ and ⑤ are not against it. ④ and ⑤ never make a trade by themselves — they are witnesses, not permission.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ENTER NOW? <span class="where">the ticket · 2-minute chart</span></div>
+    <div class="ticket"><span class="verdict g">TAKE</span> <span class="m">· WAIT · SKIP</span><br>
+entry 2955.9 · stop 2951.4 (18t, under the ten-forty low) · T1 2961.9 (two ticks before ORH · 1.3R)<br>
+size 3 (the $150 budget: ≤50t → 6 · 51–60t → 5 · 61–75t → 4 · wider = SKIP, stop too wide)<br>
+grade A · first candle at PDL · band: not yet proven at this distance<br>
+killed by · a close back below the sweep low</div>
+    <div class="what"><b>What it decides:</b> the numbers. Entry, the structure stop (never by R, always by structure), the first target in front of the first wall, the size from the risk budget, the grade, and what kills it. The flag call lives here too.</div>
+    <div class="do"><b>You:</b> TAKE means take it exactly as written — at half size while Stage 1 stands. WAIT and SKIP mean what they say. Never change the stop it gives you.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">EXIT MAP <span class="where">in the trade</span></div>
+    <div class="ticket">LONG 3 @ 2955.9<br>STOP · 2951.4 · tighten only, never wider<br>TP1 · 2961.9 (ORH) · TP2 · 2966.3 (PDH)<br>NEXT · wall ahead 2961.9 (ORH · 23t)<br><span class="b">WHY · AGAIN · ASK · TEACH ME · STOP BLINK</span></div>
+    <div class="what"><b>What it decides:</b> how you manage the trade. The one stop voice, the walls in your path, the next wall after each one clears, and the gold bar: WHY (why this card), AGAIN (repeat the last sentence), ASK (speak a question), TEACH ME (a lesson), STOP BLINK (silence a pulsing header).</div>
+    <div class="do"><b>You:</b> first cash at TP1. Move the stop only when the voice says "Stop belongs at …" — and only tighter.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">FLAG? <span class="where">which flag is this</span></div>
+    <div class="ticket">FLAG 1 · FLAG 2 · <span class="a">FLAG 3 · final</span><br>bull FLAG fired → the call is on ENTER NOW?</div>
+    <div class="what"><b>What it decides:</b> the count. A trend usually pays for two flags; the third is marked final. SWEEPS lane ② repeats the flag card's own text, which is why this window is the first candidate to fold away.</div>
+    <div class="do"><b>You:</b> the first flag of a trend is the good one; on the third, be nimble or leave it.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">BIG MONEY <span class="where">Astra's window · its own chart</span></div>
+    <div class="ticket">FLOW READ / MED<br><span class="verdict g">FLOW FAVORS LONG</span><br>Fast and longer flow agree with Tape + Book supporting the fast side.<br>LONG: FLOW SUPPORT · SHORT: FLOW OPPOSES<br>DATA STATE: OK · DEPTH STATE: L2 LIVE</div>
+    <div class="what"><b>What it decides:</b> nothing — it reads every print and the depth ladder and forms a flow read. It now writes one small file that your cards read (lane ⑤, the info-box row, ASK). Its own window becomes optional once that lane is installed.</div>
+    <div class="do"><b>You:</b> read it as one more witness. "Flow favors longs" is context for a setup the other cards must still qualify.</div>
+  </div>
+</div>
+
+<h3>How they work together — the chain</h3>
+<p><span class="b">THE ANSWER</span> (tide) → <span class="b">FINAL GATE</span> (permission) → <span class="b">SWEEPS</span> (a setup, with DELTA and BIG MONEY as witnesses) → <span class="b">ENTER NOW?</span> (the ticket: TAKE / WAIT / SKIP) → <span class="b">EXIT MAP</span> (the trade) → the <span class="b">Day Guard</span> (no window; the rails on your live account) and the <span class="b">Recorder</span> (no window; every fill on file). One speaker reads them all, in priority order: a warning outranks an exit, an exit outranks an entry call, an entry call outranks a lesson.</p>
+</section>
+
+<section id="walkthrough">
+<h2>03 · A morning, step by step <span class="tag ex">EXAMPLE PRICES</span></h2>
+<p class="lede">Click through one example morning. The times, the sentences and the rules are the system's; the prices are made up to show the shape.</p>
+<div class="stepper">
+  <div class="steps" id="steps">
+    <button data-step="0" class="active">09:30</button><button data-step="1">09:52</button><button data-step="2">10:18</button><button data-step="3">10:41</button><button data-step="4">10:41 · in the trade</button><button data-step="5">11:04</button><button data-step="6">13:50</button><button data-step="7">15:30 → 16:00</button>
+  </div>
+
+  <div class="step active" data-step="0">
+    <div class="step-time">09:30 – 09:45 · nothing counts yet</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>FINAL GATE is warming: DOOR 1 waits for the 15-minute structure, the ORB lamp waits for the opening range to finish. THE ANSWER says MIDDLE. SWEEPS is on its quiet face: watching the nearest level, four standing lanes, nothing priced.</p>
+      <div class="hear"><span class="who">THE VOICE (TEACH)</span>"Nothing counts until nine forty-five."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Nothing. The day starts at 09:45 — a fill before that belongs to yesterday's session on the Day Guard's books. Make sure your own workspace is the active one and the ASK helper beeped when you pressed it.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-time">09:52 · signal one of the day</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>Price pokes below the overnight low and closes back above it on the second candle. Lane ① prices it — but it is the first qualifying signal of the session.</p>
+      <div class="hear"><span class="who">THE VOICE (ENTRY, numbers only)</span>"Signal one of the day. The first two are numbers only. Sweep long at ONL 2948.2. Entry 2949.4. Stop 2946.1, thirteen ticks. First target 2954.0, one point five R. Six contracts. Killed by a close back below the sweep low. Numbers only."</div>
+      <div class="ticket"><span class="verdict m">NUMBERS ONLY</span> · entry 2949.4 · stop 2946.1 · T1 2954.0 · size 6</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Nothing. You read the numbers and you learn the shape. Signals one and two are never taken — that is your own rule, and the card enforces it by never saying an action word.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-time">10:18 · signal two of the day</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>A bull flag closes through its line. FLAG? says FLAG 1. ENTER NOW? prices the flag call. Still the second signal.</p>
+      <div class="hear"><span class="who">THE VOICE (ENTRY, numbers only)</span>"Signal two of the day. Numbers only. Bull flag long. Entry 2957.2. Stop 2953.6, fifteen ticks. First target 2961.9, one point three R. Six contracts. Killed by a close back below the flag line."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Nothing. Note where the ticket would have gone; the Recorder does not, because you did not trade it.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-time">10:41 · signal three — the one you may take</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>THE ANSWER: UPTREND ↑. FINAL GATE: posture allows longs, DOOR 1 green. Price sweeps the prior day low 2955.1 and closes back above it on the <b>first</b> candle — a grade A reclaim at one of the six session levels. Lane ④: BUYERS IN CONTROL. Lane ⑤: FLOW FAVORS LONG · MED. ENTER NOW?: <span class="verdict g">TAKE</span>.</p>
+      <div class="hear"><span class="who">THE VOICE (ENTRY)</span>"Go long now. Grade A. Sweep long at PDL 2955.1. Entry 2955.9. Stop 2951.4, eighteen ticks. First target 2961.9, one point three R. Three contracts. Killed by a close back below the sweep low. Your call."</div>
+      <div class="hear"><span class="who">THE VOICE (the stop, spoken once)</span>"Set the stop at 2951.4, under the ten-forty low, eighteen ticks. First wall 2961.9, the opening range high. Second wall 2966.3, the prior day high. Three fit."</div>
+      <div class="hear"><span class="who">BIG MONEY (TEACH, once in three minutes at most)</span>"Big Money sees fast and longer flow favoring longs."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Take it — <b>at half size</b> (Stage 1: three contracts, not six), with the stop exactly where the voice put it, under the sweep low. This is the only kind of moment the system ever asks you to act: permission, a grade A setup, the tide with you, the witnesses not against you, and the day's first two signals already spent.</p>
+      <p class="small">If the delta had said "Sellers still in control" or Big Money had said FLOW FAVORS SHORT, the sentence would have kept every number and lost the action words: "Do not take it."</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-time">10:41 – 11:04 · in the trade</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>EXIT MAP takes over. STOP 2951.4. TP1 2961.9 (two ticks before the ORH wall). NEXT: wall ahead 2961.9. WALL ABOVE / WALL BELOW tags are painted on the chart. The lessons go quiet while you are in.</p>
+      <div class="hear"><span class="who">THE VOICE (EXIT)</span>"Wall 2961.9 cleared. Next wall above, 2966.3, the prior day high."</div>
+      <div class="hear"><span class="who">THE VOICE (EXIT, the stop voice)</span>"Stop belongs at 2957.3 now, under the ten-fifty-two low."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>First cash at TP1. Move the stop only when the stop voice says so, and only tighter. Press WHY if you want the card's reasoning ("In a trade. This is the sweep card from ten forty-one …"), AGAIN to hear the last line again, ASK to ask a question out loud.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="5">
+    <div class="step-time">11:04 · out</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>The runner stops out at 2957.3 after TP1 paid. The Recorder writes the round trip; FINAL GATE's DAY line updates; the teacher's post-mortem names the rate and the count that judge this rule.</p>
+      <div class="hear"><span class="who">THE VOICE (TEACH)</span>"Grade A sweep, first target reached. Eight of thirty logged at these rules."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Nothing until the next qualifying setup. 11:15–11:45 is the only half hour your own ledger has ever shown net positive — it is also the window where you will most want to add a trade that is not there.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="6">
+    <div class="step-time">13:50 · a loss, and the loss clock</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>A second trade stops out for a loss at 13:50. At 13:58 you click a new entry. The Day Guard's loss clock (15 minutes after one loss) refuses it.</p>
+      <div class="hear"><span class="who">THE DAY GUARD (GUARD — outranks everything)</span>"Loss clock. Entry refused. Flattened."</div>
+      <div class="hear"><span class="who">after two straight losses</span>"Cooldown. Entry refused. Flattened."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>Wait the clock out. A refused click is the guard's action, not a trade — it does not count as a loss. Three losing round trips lock the day; the day line at −$600 locks it while flat.</p>
+    </div></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-time">15:30 → 16:00 · the receipt, then after hours</div>
+    <div class="two"><div>
+      <h3>What the cards show</h3>
+      <p>At 15:30 the day's receipt is read — the one post-mortem that speaks even after a day stop. After 16:00 the live account is closed for entries.</p>
+      <div class="hear"><span class="who">THE DAY GUARD (after hours, live account)</span>"After hours. Entry refused. The order is cancelled."</div>
+    </div><div>
+      <h3>What you do</h3>
+      <p>You are done. Your record after hours is 64 trades, 34 % winners, −$2,895 — that is why an entry outside 09:30–16:00 is cancelled before it fills.</p>
+    </div></div>
+  </div>
+</div>
+</section>
+
+<section id="voice">
+<h2>04 · What the voice says, and what it means</h2>
+<p class="lede">One speaker for the whole suite. Four lanes in priority order: GUARD outranks EXIT, EXIT outranks ENTRY, ENTRY outranks TEACH. The same sentence twice inside eight seconds is dropped; a lesson waits until you are flat.</p>
+<table>
+<tr><th>You hear</th><th>It means</th><th>You do</th></tr>
+<tr><td class="sentence">"Go long now. …" / "Go short now. …" / "Ready to buy …"</td><td>An action word. Only a TAKE at a stage that allows one — a grade A sweep at Stage 1 — ever gets one, and only three a session.</td><td>Take it as written, at the size stated (half at Stage 1).</td></tr>
+<tr><td class="sentence">"… Your call."</td><td>The teacher's signature on a priced call: the numbers are yours to act on, the decision is yours.</td><td>Decide. The card will not decide for you.</td></tr>
+<tr><td class="sentence">"Numbers only. …" then a full ticket</td><td>A signal you do not take: signal one or two of the day, a lane at Stage 0, or a grade below A.</td><td>Nothing. Learn the shape.</td></tr>
+<tr><td class="sentence">"… Delta says no. Sellers still in control … Do not take it."</td><td>The setup is priced but the tape disagrees; the action words are removed, the numbers kept.</td><td>Nothing.</td></tr>
+<tr><td class="sentence">"Set the stop at 2961.9, under the ten-oh-six low, twenty-two ticks. First wall 2968.4, the opening range high. Second wall 2972.1 …"</td><td>The one stop voice: the exact price, its structure, the two walls in your path.</td><td>Place the stop there. Never wider.</td></tr>
+<tr><td class="sentence">"Stop belongs at 2957.3 now, under the ten-fifty-two low."</td><td>The trail: a tighter stop has earned its place.</td><td>Move the stop — tighter only.</td></tr>
+<tr><td class="sentence">"Wall 2968.4 cleared. Next wall above, 2972.1, the prior day high."</td><td>The trade passed a wall; the next one is named.</td><td>Take cash at the first, let the runner aim at the next.</td></tr>
+<tr><td class="sentence">"Delta flipped to the sellers. They took sixty-two percent of the last candle. Shorts favored, no longs into this."</td><td>Control of the tape changed hands (spoken at most once in six minutes).</td><td>No longs into it. If you are long, mind your stop.</td></tr>
+<tr><td class="sentence">"Big Money sees fast and longer flow favoring longs." / "… favoring shorts."</td><td>Big Money's word changed into FLOW FAVORS LONG / SHORT (at most once in three minutes; never in the first two signals; in a trade only about your side).</td><td>Context. It moves no stop, size or gate.</td></tr>
+<tr><td class="sentence">"Big Money saw the upward burst fail to hold." / "… the downward burst …"</td><td>DO NOT CHASE UP / DOWN: a burst was rejected. Not a reversal signal.</td><td>Do not chase that break.</td></tr>
+<tr><td class="sentence">"Loss clock. Entry refused. Flattened." / "Cooldown. Entry refused. Flattened." / "Day over. Flattened."</td><td>The Day Guard's rails on the live account: 15 minutes after a loss, 30 after two straight, the −$600 line.</td><td>Wait. A refused click is not a trade.</td></tr>
+<tr><td class="sentence">"After hours. Entry refused. The order is cancelled."</td><td>An entry outside 09:30–16:00 ET on the live account, cancelled before it fills.</td><td>Done for the day.</td></tr>
+<tr><td class="sentence">"Flatten failed. You are not flat. Close it yourself now."</td><td>The guard tried to flatten and could not confirm it.</td><td>Close it yourself, now.</td></tr>
+<tr><td class="sentence">"Listening." / "The ASK helper is not running. Start it from the Desktop shortcut."</td><td>ASK heard your press / the helper program is not running.</td><td>Ask your question out loud / start the helper from the Desktop shortcut.</td></tr>
+<tr><td class="sentence">"Nothing counts until nine forty-five." / "Afternoon window opens at one forty-five."</td><td>The day's clock, in words. (No "best hour" is ever named any more — your own record does not support one.)</td><td>Wait for the window.</td></tr>
+</table>
+</section>
+
+<section id="rails">
+<h2>05 · The rails — and why each one exists, in your own numbers</h2>
+<p class="lede">Every rail below was written after a measurement on your own record. None of them is a theory.</p>
+<div class="grid">
+  <div class="stat"><div class="num">−$21K</div>net over 15 months, all SIM, with about 70 % of it commission — the reason the system counts trades, not hours in front of the screen.<div class="src">the 15-month ledger, 2026-08-25</div></div>
+  <div class="stat"><div class="num">64 · 34 % · −$2,895</div>after-hours trades, their win rate, and what they cost — the reason the live account refuses entries outside 09:30–16:00.<div class="src">hour_scoreboard.csv, 2026-09-12</div></div>
+  <div class="stat"><div class="num good">11:15 – 11:45 · +$169</div>the only half hour of your day that is net positive (22 trades) — and no half hour is good enough to be announced as "your best hour", which is why that sentence was retired.<div class="src">hour_scoreboard.csv, 2026-09-12</div></div>
+  <div class="stat"><div class="num">27 · 44 % · −$726</div>14:45–15:30, once quoted to you as "your best slot" from a frozen study — it is not.<div class="src">hour_scoreboard.csv, 2026-09-12</div></div>
+  <div class="stat"><div class="num">9 in 10</div>late reclaims (the fourth candle or later) that stopped out on your record — the reason a late reclaim is a spoken skip, never a trade.<div class="src">the sweep study, 2026-09-06</div></div>
+  <div class="stat"><div class="num">47 of 99</div>winners a 10-tick stop cap would have killed — the reason the stop is placed by structure, never by a fixed number, and why a cap was refused.<div class="src">the September study, 2026-09-06</div></div>
+  <div class="stat"><div class="num">144 · 38</div>times "day stop hit" was spoken in one month, and entries that followed it within half an hour — the reason the once-a-day latch and the flat-only lock exist.<div class="src">voice.csv, 2026-09-01</div></div>
+  <div class="stat"><div class="num">3 · 3 · 3</div>three losing round trips lock the day; three losses in a row on 2026-09-04 were followed by four more trades — the reason the lock now cancels and flattens instead of only speaking.<div class="src">dayguard_log.csv, 2026-09-04</div></div>
+</div>
+<div class="honest"><b>The honest line.</b> Following the rails removes the leaks that were measured — after hours, over-trading after a stop, chasing, the first two signals, stops moved wider. That is where the money left. Whether the <i>setups</i> themselves make money is still being counted: Stage 1 needs thirty grade-A trades before it is judged, and every scoreboard cell under five trades is too thin to lean on. Nobody — not this page, not the voice, not Big Money — can promise a profit. What the system can promise is that when it says nothing, you have no reason to trade, and when it speaks, every number came from your own chart.</div>
+</section>
+
+<section id="new">
+<h2>06 · What changed this weekend</h2>
+<h3>Before Big Money</h3>
+<p>Your six indicators talked only to each other, through one shared board inside NinjaTrader. Big Money — the separate indicator ChatGPT "Astra" wrote — ran on its own chart in its own workspace, with its own window and no voice, and none of your cards knew it existed. That is why "the indicator by ChatGPT does not show up": it was never on your live workspace's charts.</p>
+<h3>Now (on GitHub; installs on your word)</h3>
+<p>Big Money writes <b>one small file</b> every time its read changes (and a heartbeat every five seconds). Your cards read that file and nothing else — no shared code, no shared memory, no second voice:</p>
+<ul>
+  <li><b>Lane ⑤ BIG MONEY</b> on the SWEEPS card: headline · quality · reason, coloured green / coral / amber / grey; "quiet since 10:14" when the file goes stale; the exact data-state word when Big Money reports degraded data.</li>
+  <li><b>One row in the info box</b> on every chart of the same instrument and contract (the 5 and the 15 included).</li>
+  <li><b>ASK:</b> "what does Big Money say" → "Study status. Big Money says flow favors long, quality med, 1 second ago. …" — or "has been quiet for 35 minutes … not current" — or "unavailable".</li>
+  <li><b>One sentence</b> from the suite's own speaker, only when the word changes into FLOW FAVORS LONG / SHORT or DO NOT CHASE UP / DOWN, at most once in three minutes, under every rule the other sentences obey.</li>
+</ul>
+<p>A September file never shows on a December chart; a stale file is never spoken; a file that fails its contract is thrown away whole. <b>Nothing about Big Money can move a stop, a size, a gate, a door or a rail.</b></p>
+<h3>The cards — not combined yet</h3>
+<p>The plan is seven windows down to three, each step only on your yes and each one display only: THE ANSWER's word onto FINAL GATE's banner (and its window off) → FLAG? folded into SWEEPS lane ② → ENTER NOW? and EXIT MAP as one card with two faces (flat / in a trade) → Big Money's own window off once its headline rides lane ⑤. Until you say yes, the screen is exactly what section 02 shows.</p>
+</section>
+
+<section id="checklist">
+<h2>07 · Your daily checklist</h2>
+<p class="lede">Tick them off each morning. The page remembers today's ticks on this device and clears them tomorrow.</p>
+<ul class="check" id="check">
+  <li><input type="checkbox" id="c1"><label for="c1">NinjaTrader opened on <b>your own</b> workspace ("Live Trasding best workspace …"), not the BIG MONEY TEST one — the 15-minute card and FINAL GATE live only on yours.</label></li>
+  <li><input type="checkbox" id="c2"><label for="c2">The DLL is the build you expect (no F5 owed). If a session note says an F5 is owed: New → NinjaScript Editor → F5 once, flat, then close and reopen NinjaTrader.</label></li>
+  <li><input type="checkbox" id="c3"><label for="c3">ASK pressed once: a beep, then "Listening." — or "The ASK helper is not running" → the Desktop shortcut "FINAL EDGE ASK - start the helper".</label></li>
+  <li><input type="checkbox" id="c4"><label for="c4">VOICE is on (the FINAL GATE title bar; it resets to ON on every load by design).</label></li>
+  <li><input type="checkbox" id="c5"><label for="c5">The day starts at 09:45. Signals one and two are numbers only. Only a grade A sweep earns "Your call." — at half size.</label></li>
+  <li><input type="checkbox" id="c6"><label for="c6">In a trade: the stop is where the voice put it, tighter only; first cash two ticks before the first wall.</label></li>
+  <li><input type="checkbox" id="c7"><label for="c7">After a loss: wait the 15 minutes. After two straight: 30. After three: the day is done. After 16:00: done.</label></li>
+</ul>
+</section>
+
+<section id="words">
+<h2>08 · The words</h2>
+<dl>
+  <dt>Sweep</dt><dd>Price pokes through a real level (the six session levels: PDH, PDL, ONH, ONL, ORH, ORL) and closes back inside. The reclaim is the trade; the poke is the bait.</dd>
+  <dt>Grade A / B / C</dt><dd>A = the reclaim on the first candle at one of the six session levels. B and C are later candles or lesser levels: watch only.</dd>
+  <dt>Stage 0 / 1 / 2</dt><dd>What a lane may say. 0 = numbers only. 1 = an action word for grade A at half size (the sweep lane, since your yes of 2026-09-07). 2 = full size, only when the Sunday scoreboard says PROMOTABLE and you say so.</dd>
+  <dt>Flag</dt><dd>A strong pole, a shallow rest that keeps over half the pole, then a 2-minute close through the flag line. FLAG 1, 2, 3 · final counts them.</dd>
+  <dt>The W and the M</dt><dd>A double bottom or double top. Its one door: the first 2-minute close through the neckline. Nothing is priced or spoken before that close.</dd>
+  <dt>Neckline / shelf</dt><dd>The shelf is the two tests' price; the neckline is the high between them (for a W) that the close must beat.</dd>
+  <dt>Wall</dt><dd>A strong level in the trade's path: the six session levels, the live 5- and 15-minute swings, your own lines. The first target sits two ticks in front of the first wall.</dd>
+  <dt>Tide</dt><dd>THE ANSWER's word. With the tide = full rules; against it = half size, first target only, and only with a wall behind you.</dd>
+  <dt>Delta</dt><dd>Buy volume minus sell volume on the tape. Lane ④ names who is in control every candle; the voice speaks only when control changes hands.</dd>
+  <dt>Flow read</dt><dd>Big Money's word: FLOW FAVORS LONG / SHORT, LONG / SHORT FLOW ONLY, DO NOT CHASE UP / DOWN, or one of its WAIT words. MED is its highest quality — it never claims HIGH.</dd>
+  <dt>The first two signals</dt><dd>The first two qualifying signals of a session are never taken: numbers and a lesson only.</dd>
+  <dt>The rails</dt><dd>The Day Guard's rules on the live account: the 09:45 start, the −$600 line (flat only), the 15-minute loss clock, the 30-minute cooldown, the three-loss lock, no entries after hours.</dd>
+  <dt>Numbers only / Your call / No trade</dt><dd>The three endings a priced sentence can have. Only "Your call." ever comes with an action word.</dd>
+</dl>
+<footer>Final Edge — The Playbook · Created 2026-09-12 · Revised 2026-09-12 · v1.0.0 · Created for Arnie by Claude. Transcribed from FinalEdgeSweeps v3.38.0, FinalLevels v10.38.0, FinalEdgeGates v5.76.0, TheDayGuard v1.9.0, FinalEdgeSwings v5.54 and Big Money 2.1.1-study as they stand on GitHub on 2026-09-12. Example prices are examples; the rules, the sentences and the measured numbers are real. Nothing here places, moves or cancels an order.</footer>
+</section>
+</main>
+</div>
+
+<!-- READ-ALOUD NARRATOR (bottom-right; reads the whole visible page) -->
+<div id="narrator" class="narrator" hidden>
+  <button id="nar-read" class="nar-read-btn" type="button" title="Or just click anywhere on the page — it starts reading from that spot. Click somewhere else to jump there.">🔊 Read this page to me</button>
+  <div id="nar-controls" class="nar-controls" hidden>
+    <div class="nar-status"><span class="nar-anim" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="nar-status-label">Reading…</span></div>
+    <div class="nar-btn-row">
+      <button class="nar-btn nar-seek" data-seek="-60" type="button" aria-label="Back one minute">⏪&nbsp;1m</button>
+      <button class="nar-btn nar-seek" data-seek="-30" type="button" aria-label="Back 30 seconds">⏪&nbsp;30s</button>
+      <button class="nar-btn nar-seek" data-seek="-15" type="button" aria-label="Back 15 seconds">⏪&nbsp;15s</button>
+      <button id="nar-pause" class="nar-btn nar-primary" type="button">⏸ Pause</button>
+      <button id="nar-stop" class="nar-btn nar-stop" type="button">⏹ Stop</button>
+      <button class="nar-btn nar-seek" data-seek="15" type="button" aria-label="Forward 15 seconds">15s&nbsp;⏩</button>
+      <button class="nar-btn nar-seek" data-seek="30" type="button" aria-label="Forward 30 seconds">30s&nbsp;⏩</button>
+      <button class="nar-btn nar-seek" data-seek="60" type="button" aria-label="Forward one minute">1m&nbsp;⏩</button>
+    </div>
+    <div class="nar-opts">
+      <label class="nar-opt">Speed <input id="nar-rate" type="range" min="0.6" max="1.4" step="0.05" value="0.95"><span id="nar-rate-label">0.95×</span></label>
+      <label class="nar-opt">Voice <select id="nar-voice"></select></label>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // theme
+  var KEY='fep_theme'; var root=document.documentElement;
+  function apply(t){ root.setAttribute('data-theme',t); var l=document.getElementById('theme-label'); if(l) l.textContent = t==='dark' ? 'Light mode' : 'Dark mode'; }
+  try{ apply(localStorage.getItem(KEY)||'dark'); }catch(e){ apply('dark'); }
+  var tg=document.getElementById('theme-toggle');
+  function flip(){ var t=root.getAttribute('data-theme')==='dark'?'light':'dark'; apply(t); try{ localStorage.setItem(KEY,t); }catch(e){} }
+  tg.addEventListener('click',flip); tg.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } });
+
+  // stepper
+  var btns=document.querySelectorAll('#steps button'), steps=document.querySelectorAll('.step');
+  btns.forEach(function(b){ b.addEventListener('click',function(){ var n=b.getAttribute('data-step');
+    btns.forEach(function(x){ x.classList.toggle('active', x===b); });
+    steps.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-step')===n); });
+  }); });
+
+  // checklist, per day
+  var today=new Date(); var dk='fep_check_'+today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var saved={}; try{ saved=JSON.parse(localStorage.getItem(dk)||'{}'); }catch(e){ saved={}; }
+  document.querySelectorAll('#check input').forEach(function(cb){
+    cb.checked=!!saved[cb.id]; cb.parentNode.classList.toggle('done',cb.checked);
+    cb.addEventListener('change',function(){ saved[cb.id]=cb.checked; cb.parentNode.classList.toggle('done',cb.checked); try{ localStorage.setItem(dk,JSON.stringify(saved)); }catch(e){} });
+  });
+
+  // nav highlight
+  var links=document.querySelectorAll('#nav a'), secs=document.querySelectorAll('main section');
+  function mark(){ var y=window.scrollY+120, cur=secs[0]; secs.forEach(function(s){ if(s.offsetTop<=y) cur=s; }); links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+cur.id); }); }
+  window.addEventListener('scroll',mark); mark();
+})();
+</script>
+<script src="/narrator.js"></script>
+</body>
+</html>

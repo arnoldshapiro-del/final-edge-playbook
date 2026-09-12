@@ -1,0 +1,13 @@
+{
+  "name": "Final Edge - The Playbook",
+  "short_name": "Playbook",
+  "description": "What the Final Edge cards say and what Arnie does: the six cards, the fifth lane, the voice, the rails, and an example morning, in plain English.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1424",
+  "theme_color": "#dfa849",
+  "orientation": "any",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
