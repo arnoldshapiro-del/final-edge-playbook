@@ -8,4 +8,4 @@
 
 **Deploy:** GitHub `arnoldshapiro-del/final-edge-playbook` (main) → Netlify auto-build → https://final-edge-playbook.netlify.app (static, publish `.`, no build command). Update = edit → commit → push; never the Netlify CLI.
 
-**Status:** v1.1.0 shipped 2026-09-12 (night): the cards 7 → 3 are on the page (section 02 and 06 say what moved where and which dial brings a window back); the sidebar says "Live after Arnie's next F5" — change that line once his F5 and the DLL probe confirm the build.
+**Status:** v1.1.0 shipped 2026-09-12 (night): the cards 7 → 3 are on the page (section 02 and 06 say what moved where and which dial brings a window back); the sidebar says "Three windows, live since 2026-09-12 18:49" (his F5 came at 18:49:26; the DLL probe found every needle).
