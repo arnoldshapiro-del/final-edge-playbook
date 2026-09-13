@@ -21,3 +21,5 @@ Deploy: pushed to `arnoldshapiro-del/final-edge-playbook` main; Netlify site `fi
 **Same night, v1.2.0 (late):** Arnie's order "only always going with the trend" and "create System 2 with a slider" reached the page: rule 2 carries the with-the-trend law; section 04 gained the System 1 / System 2 block with the slider (OFF · KEY · ALL), what System 2 is and never does, and a shaped example; section 06 the late block with his measured record (267 entries: 89 with, 61 against, 117 unknown); the sidebar versions SWEEPS v3.40.0 / LEVELS v10.40.0 and "Live after Arnie's next F5".
 
 **2026-09-13 00:12, v1.2.1:** his F5 came at 00:08:29 and the DLL probe found every needle; the sidebar line became "Live since 2026-09-13 00:08", Revised 2026-09-13.
+
+**2026-09-13 00:45, v1.2.2:** the sidebar names GATES v5.78.0 (one trend for every lane; door 2 never opens the reversal side) and says the 00:40 build is live after his next F5.
