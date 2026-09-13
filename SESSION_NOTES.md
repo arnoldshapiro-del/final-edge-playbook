@@ -17,3 +17,5 @@ Arnie ordered the recommendation built ("that includes combining the cards"), so
 Deploy: pushed to `arnoldshapiro-del/final-edge-playbook` main; Netlify site `final-edge-playbook` created by API (id df73f5be-f36a-42bb-9187-cfc00f8c2761, installation 77160536) → https://final-edge-playbook.netlify.app.
 
 **Same night, v1.1.1:** Arnie's F5 came at 18:49:26 and the DLL probe found every needle, so the sidebar line changed from "Live after Arnie's next F5" to "Three windows, live since 2026-09-12 18:49"; Revised date unchanged (same day), version bumped.
+
+**Same night, v1.2.0 (late):** Arnie's order "only always going with the trend" and "create System 2 with a slider" reached the page: rule 2 carries the with-the-trend law; section 04 gained the System 1 / System 2 block with the slider (OFF · KEY · ALL), what System 2 is and never does, and a shaped example; section 06 the late block with his measured record (267 entries: 89 with, 61 against, 117 unknown); the sidebar versions SWEEPS v3.40.0 / LEVELS v10.40.0 and "Live after Arnie's next F5".
