@@ -25,3 +25,7 @@ Deploy: pushed to `arnoldshapiro-del/final-edge-playbook` main; Netlify site `fi
 **2026-09-13 00:45, v1.2.2:** the sidebar names GATES v5.78.0 (one trend for every lane; door 2 never opens the reversal side) and says the 00:40 build is live after his next F5.
 
 **2026-09-13 00:46, v1.2.3:** his F5 came at 00:45:28 and the probe found every needle; the sidebar says "Live since 2026-09-13 00:45".
+
+**2026-09-13 ~05:25, v1.3.0:** lane 6 THE PULLBACK joins the SWEEPS card in section 02 (header + status line, tagged NEW), the sidebar names SWEEPS v3.41.0 · LEVELS v10.41.0 · GATES v5.79.0 and says "six lanes" and "The pullback lane installed 2026-09-13 05:14, live at your next F5"; section 06 gains the block "The pullback lane - lane 6 (2026-09-13 early)": his order, the shape (arrive, touch, hold), the ticket, the voice at stage 0, the measurement (17 days: 5.7 arrivals / 4.1 touches / 1.6 holds a day; 22% of holds reached a 1.5R proxy), the card size note (10.6 px at 640x900, 13 px at 640x1100); the footer transcribes v3.41.0 / v10.41.0 / v5.79.0 as built 2026-09-13 early. Pushed 4ad97c2; production verified.
+
+**2026-09-13 ~05:41, v1.3.1:** his F5 came 05:27:31 (the probe found every needle); on his yes THE ANSWER's on-chart drawing was turned off in his workspace, so the lede, THE ANSWER card's title line and the section-06 sentence now say the 15-minute chart carries no card and the word lives on FINAL GATE's banner (the dial brings it back). Pushed edc1125; production verified.
