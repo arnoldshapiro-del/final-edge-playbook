@@ -23,3 +23,5 @@ Deploy: pushed to `arnoldshapiro-del/final-edge-playbook` main; Netlify site `fi
 **2026-09-13 00:12, v1.2.1:** his F5 came at 00:08:29 and the DLL probe found every needle; the sidebar line became "Live since 2026-09-13 00:08", Revised 2026-09-13.
 
 **2026-09-13 00:45, v1.2.2:** the sidebar names GATES v5.78.0 (one trend for every lane; door 2 never opens the reversal side) and says the 00:40 build is live after his next F5.
+
+**2026-09-13 00:46, v1.2.3:** his F5 came at 00:45:28 and the probe found every needle; the sidebar says "Live since 2026-09-13 00:45".
