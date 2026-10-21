@@ -2,6 +2,10 @@
 
 Newest entry on top. Written from a cloud session; it could not see the Desktop or sign in anywhere.
 
+## 2026-10-21 — session memory added (notes only)
+
+`CLAUDE.md` gained "Session handoff", "Decisions and why" and "Compact Instructions"; `SESSION_NOTES.md` has the dated entry. Read those two files first in every new session. The app is unchanged.
+
 ## 2026-10-19 — wrap-up note
 
 **What was built.** One-page teaching app: what the Final Edge cards say and what to do (three windows, SWEEPS lanes, the voice's sentences, Day Guard rails, an example morning, a daily checklist). Latest version v1.3.6.
